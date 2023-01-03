@@ -26,13 +26,14 @@ Repository: https://github.com/Meyn1/ArduinoJukebox
 4. Open the application.
 
 Here is the Home Menu:
-
+![off](https://user-images.githubusercontent.com/70847870/210411190-4f1ddb70-4357-4003-b413-37e12512288c.png)
+![on](https://user-images.githubusercontent.com/70847870/210411558-14107b51-67f5-429b-99ec-3bb05f78641b.png)
 
 Play and Shuffle songs.
 
 
 Here is the Settings View. The Button in the top right corner can change the view.
-
+![settings](https://user-images.githubusercontent.com/70847870/210412074-cd1280ed-2379-430c-99e2-d136dc152f8d.png)
 Select and connect to a device
 Change the song path
 

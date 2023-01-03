@@ -12,6 +12,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="logo.ico" />
     <None Remove="Recources\Images\bluetooth.png" />
     <None Remove="Recources\Images\bluetooth_off.png" />
     <None Remove="Recources\Images\bluetooth_on.png" />
@@ -32,7 +33,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="logo.ico" />
+    <Content Include="logo.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -47,6 +48,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="logo.ico" />
     <Resource Include="Recources\Images\bluetooth.png" />
     <Resource Include="Recources\Images\bluetooth_off.png" />
     <Resource Include="Recources\Images\bluetooth_on.png" />
