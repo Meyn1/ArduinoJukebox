@@ -1,6 +1,8 @@
 ﻿# Arduino Jukebox
 ## _An Arduino jukebox for the buzzer_
 
+<img align="right" src="https://github.com/Meyn1/ArduinoJukebox/blob/fb8abed79ec5bae5f405fef367865005b90603e3/ArduinoJukebox/logo.png" alt="logo" width="200"/>
+
 A modern application that can connect to a ble arduino module and play songs trough a buzzer.
 Example is for an MakeBot/MBot. Start, stop, mute, next, previous, random, dance function.
 All songs based on https://github.com/robsoncouto/arduino-songs
