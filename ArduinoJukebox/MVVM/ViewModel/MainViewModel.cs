@@ -45,6 +45,7 @@ namespace ArduinoJukebox.MVVM.ViewModel
 
         private async Task StartUp()
         {
+            SaveHandler.Load();
             SaveHandler.LoadSongs();
             await BLEHandler.ScanBluetoothRadio();
             await BLEHandler.EnableBluetoothAsync();

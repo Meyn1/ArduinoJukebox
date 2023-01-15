@@ -1,7 +1,6 @@
 ﻿using ArduinoConnect;
 using ArduinoJukebox.Core;
 using ArduinoJukebox.MVVM.Model;
-using System;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -10,8 +9,7 @@ namespace ArduinoJukebox.MVVM.ViewModel
 {
     internal class SettingsViewModel : ObservableObject
     {
-        private string _libraryPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-        public string LibraryPath { get => _libraryPath; set => SetField(ref _libraryPath, value); }
+        public string LibraryPath { get => SaveHandler.SongPath; }
 
         public bool IsEnabled { get => _isEnabled; set => SetField(ref _isEnabled, value); }
         private bool _isEnabled = true;
@@ -56,11 +54,16 @@ namespace ArduinoJukebox.MVVM.ViewModel
             DiscoverLibrary = new(o =>
             {
                 using FolderBrowserDialog fbd = new();
-                fbd.RootFolder = Environment.SpecialFolder.MyDocuments;
+                fbd.InitialDirectory = SaveHandler.SongPath;
                 DialogResult result = fbd.ShowDialog();
                 if (result == DialogResult.OK && !string.IsNullOrWhiteSpace(fbd.SelectedPath))
-                    LibraryPath = fbd.SelectedPath;
-                SaveHandler.LoadSongs();
+                    SaveHandler.SongPath = fbd.SelectedPath;
+                OnPropertyChanged(nameof(LibraryPath));
+                Task.Run(() =>
+                {
+                    SaveHandler.Save();
+                    SaveHandler.LoadSongs();
+                });
             });
 
         }

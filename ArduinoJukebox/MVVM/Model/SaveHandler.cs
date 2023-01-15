@@ -13,6 +13,8 @@ namespace ArduinoJukebox.MVVM.Model
         private static HomeViewModel? HomeVM => (MainViewModel.Instance?.VMs[0] as HomeViewModel);
 
         public static DeviceInfo? LastConnectedDevice { get; set; }
+        public static string SongPath { get; set; } = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+        private static readonly string _savePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "ArduinoJukebox", "appsettings.json");
 
         /// <summary>
         /// Save song path file and last used ble device
@@ -21,8 +23,10 @@ namespace ArduinoJukebox.MVVM.Model
         {
             if (SettingsVM != null)
             {
-
-
+                if (!Directory.Exists(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "ArduinoJukebox")))
+                    Directory.CreateDirectory(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "ArduinoJukebox"));
+                string save = JsonSerializer.Serialize(SongPath, new JsonSerializerOptions() { WriteIndented = true });
+                File.WriteAllText(_savePath, save);
             }
         }
 
@@ -33,7 +37,8 @@ namespace ArduinoJukebox.MVVM.Model
         {
             if (SettingsVM != null)
             {
-
+                if (File.Exists(_savePath))
+                    SongPath = JsonSerializer.Deserialize<string>(File.ReadAllText(_savePath), new JsonSerializerOptions() { WriteIndented = true }) ?? _savePath;
             }
         }
 
@@ -44,7 +49,7 @@ namespace ArduinoJukebox.MVVM.Model
             {
                 try
                 {
-                    string[] files = Directory.GetFiles(SettingsVM.LibraryPath, "*.song8");
+                    string[] files = Directory.GetFiles(SaveHandler.SongPath, "*.song8");
                     List<Song> songs = new(files.Length);
                     for (int i = 0; i < files.Length; i++)
                     {

@@ -1,6 +1,7 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
-                    xmlns:core="clr-namespace:ArduinoJukebox.Core" xmlns:windowheaderstyles="clr-namespace:ArduinoJukebox.MVVM.View">
+                    xmlns:core="clr-namespace:ArduinoJukebox.Core" 
+                    xmlns:windowheaderstyles="clr-namespace:ArduinoJukebox.MVVM.View">
 
     <Style x:Key="ModernWindowStyleLight"  TargetType="{x:Type Window}">
         <Setter Property="AllowsTransparency" Value="True"/>
@@ -64,6 +65,7 @@
                                     <Setter.Value>
                                         <LinearGradientBrush EndPoint="0,0" StartPoint="0,1">
                                             <GradientStop Color="#FFCE9999" />
+                                            <!--FF99BDCE-->
                                             <GradientStop Color="White" Offset="0.7"/>
                                         </LinearGradientBrush>
                                     </Setter.Value>

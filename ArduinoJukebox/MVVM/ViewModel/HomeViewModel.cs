@@ -18,7 +18,18 @@ namespace ArduinoJukebox.MVVM.ViewModel
         public RelayCommand RandomNormalConnectCommand { get; }
 
 
-        public ObservableCollection<Song> Songs { get; set; } = new();
+        public ObservableCollection<Song> Songs
+        {
+            get => _songs; set
+            {
+                _songs = value;
+                if (IsRandom)
+                    PlayList = Songs.Shuffle().ToArray();
+                else
+                    PlayList = Songs.ToArray();
+            }
+        }
+        public ObservableCollection<Song> _songs = new();
         public Song[] PlayList { get; set; } = Array.Empty<Song>();
 
         private Song? _actualSong;
