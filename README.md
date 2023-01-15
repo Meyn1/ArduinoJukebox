@@ -36,23 +36,23 @@ Play and Shuffle songs.
 
 Here is the Settings View. The Button in the top right corner can change the view.
 ![settings](https://user-images.githubusercontent.com/70847870/210412074-cd1280ed-2379-430c-99e2-d136dc152f8d.png)
-Select and connect to a device
-Change the song path
+- Select and connect to a device
+- Change the song path
 
 On application side:
-Send Byte = 3: Buffer is full please wait.
+- Send Byte = 3: Buffer is full please wait.
 
 On arduino side:
-Send Byte = 200: New song will be played
-Send Byte = 201: Play song
-Send Byte = 202: Pause song
-Send Byte = 203: Mute song
-Send Byte = 204: Unmute song
-Send Byte = 205: On Customisable
-Send Byte = 206: Off Customisable
-Send Byte = 206: Customisable
-Send Byte > 100 < 180: Length of the played song
-Send Byte < 100: Frequescy of the song
+- Send Byte = 200: New song will be played
+- Send Byte = 201: Play song
+- Send Byte = 202: Pause song
+- Send Byte = 203: Mute song
+- Send Byte = 204: Unmute song
+- Send Byte = 205: On Customisable
+- Send Byte = 206: Off Customisable
+- Send Byte = 206: Customisable
+- Send Byte > 100 < 180: Length of the played song
+- Send Byte < 100: Frequescy of the song
 
 ```c++
 void getSerialInput() {
